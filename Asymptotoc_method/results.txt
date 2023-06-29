@@ -1,0 +1,40 @@
+
+Decay: Ds(2317)		State: X(4274)
+	 N^UL:	4.76989
+	 Cross-section:	0.770926 fb
+	 Mass  variation 1sigma:	 UL = 0.770927
+	 Mass  variation -1sigma:	 UL = 0.770924
+	 Width variation 1sigma:	 UL = 0.770978
+	 Width variation -1sigma:	 UL = 0.770873
+
+Decay: Ds(2317)		State: X(4685)
+	 N^UL:	4.7787
+	 Cross-section:	0.772349 fb
+	 Mass  variation 1sigma:	 UL = 0.772366
+	 Mass  variation -1sigma:	 UL = 0.772332
+	 Width variation 1sigma:	 UL = 0.772594
+	 Width variation -1sigma:	 UL = 0.772107
+
+Decay: Ds(2460)		State: X(4630)
+	 N^UL:	4.93804
+	 Cross-section:	0.798102 fb
+	 Mass  variation 1sigma:	 UL = 0.799605
+	 Mass  variation -1sigma:	 UL = 0.796643
+	 Width variation 1sigma:	 UL = 0.800677
+	 Width variation -1sigma:	 UL = 0.795305
+
+Decay: Ds(2460)		State: X(4500)
+	 N^UL:	4.81464
+	 Cross-section:	0.778157 fb
+	 Mass  variation 1sigma:	 UL = 0.778254
+	 Mass  variation -1sigma:	 UL = 0.778062
+	 Width variation 1sigma:	 UL = 0.778729
+	 Width variation -1sigma:	 UL = 0.77758
+
+Decay: Ds(2460)		State: X(4700)
+	 N^UL:	4.91634
+	 Cross-section:	0.794594 fb
+	 Mass  variation 1sigma:	 UL = 0.795013
+	 Mass  variation -1sigma:	 UL = 0.794172
+	 Width variation 1sigma:	 UL = 0.795702
+	 Width variation -1sigma:	 UL = 0.793418

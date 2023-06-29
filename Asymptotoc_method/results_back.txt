@@ -1,0 +1,52 @@
+BEFORE additional systematics account
+--> X(4274) cross-section UL:
+        >>>>> 0.771 fb <<<<<
+Mass variation 1 sigma:    UL = 0.771 fb
+Mass variation -1 sigma:   UL = 0.771 fb
+Width variation 1 sigma:   UL = 0.771 fb
+Width variation -1 sigma:  UL = 0.771 fb
+GE(4274) = 4.770  ,  ratio =  90.00% 
+
+--> X(4685) cross-section UL:
+        >>>>> 0.772 fb <<<<<
+Mass variation 1 sigma:    UL = 0.772 fb
+Mass variation -1 sigma:   UL = 0.772 fb
+Width variation 1 sigma:   UL = 0.773 fb
+Width variation -1 sigma:  UL = 0.772 fb
+GE(4685) = 4.779  ,  ratio =  90.00%
+
+--> X(4630) cross-section UL:
+        >>>>> 0.798 fb <<<<<
+Mass variation 1 sigma:    UL = 0.800 fb
+Mass variation -1 sigma:   UL = 0.797 fb
+Width variation 1 sigma:   UL = 0.801 fb
+Width variation -1 sigma:  UL = 0.795 fb
+GE(4630) = 4.938  ,  ratio =  90.00%
+
+--> X(4500) cross-section UL:
+        >>>>> 0.778 fb <<<<<
+Mass variation 1 sigma:    UL = 0.778 fb
+Mass variation -1 sigma:   UL = 0.778 fb
+Width variation 1 sigma:   UL = 0.779 fb
+Width variation -1 sigma:  UL = 0.778 fb
+GE(4500) = 4.815
+
+--> X(4700) cross-section UL:
+        >>>>> 0.795 fb <<<<<
+Mass variation 1 sigma:  UL = 0.795 fb
+Mass variation 1 sigma:  UL = 0.794 fb
+Mass variation 1 sigma:  UL = 0.796 fb
+Mass variation 1 sigma:  UL = 0.793 fb
+GE(4700) = 4.916  ,  ratio =  90.00%
+
+AFTER additional systematics account
+--> X(4274) cross-section UL:
+        >>>>> 0.771 fb <<<<<
+--> X(4685) cross-section UL:
+        >>>>> 0.772 fb <<<<<
+--> X(4630) cross-section UL:
+        >>>>> 0.798 fb <<<<<
+--> X(4500) cross-section UL:
+        >>>>> 0.778 fb <<<<<
+--> X(4700) cross-section UL:
+        >>>>> 0.795 fb <<<<<
