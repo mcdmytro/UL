@@ -1,0 +1,50 @@
+
+	 >>>>> X(4274) <<<<<
+--> Counting model result (at 90% CL): 
+		Upper Limit = 1.17475
+--> FC confidence intervals (at the 90% CL):
+		Upper Limit = 2.415
+		Lower Limit = 0.085
+--> Cross-sections:
+		Feldman-Cousins method:	0.391156 fb
+		Counting model method:	0.190274 fb
+
+	 >>>>> X(4685) <<<<<
+--> Counting model result (at 90% CL): 
+		Upper Limit = 1.13411
+--> FC confidence intervals (at the 90% CL):
+		Upper Limit = 1.84
+		Lower Limit = 0
+--> Cross-sections:
+		Feldman-Cousins method:	0.298024 fb
+		Counting model method:	0.183692 fb
+
+	 >>>>> X(4630) <<<<<
+--> Counting model result (at 90% CL): 
+		Upper Limit = 1.14841
+--> FC confidence intervals (at the 90% CL):
+		Upper Limit = 1.85
+		Lower Limit = 0
+--> Cross-sections:
+		Feldman-Cousins method:	0.299644 fb
+		Counting model method:	0.186007 fb
+
+	 >>>>> X(4500) <<<<<
+--> Counting model result (at 90% CL): 
+		Upper Limit = 1.1634
+--> FC confidence intervals (at the 90% CL):
+		Upper Limit = 2.3
+		Lower Limit = 0
+--> Cross-sections:
+		Feldman-Cousins method:	0.37253 fb
+		Counting model method:	0.188435 fb
+
+	 >>>>> X(4700) <<<<<
+--> Counting model result (at 90% CL): 
+		Upper Limit = 1.15378
+--> FC confidence intervals (at the 90% CL):
+		Upper Limit = 2.095
+		Lower Limit = 0
+--> Cross-sections:
+		Feldman-Cousins method:	0.339326 fb
+		Counting model method:	0.186877 fb
