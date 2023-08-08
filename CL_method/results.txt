@@ -1,0 +1,11 @@
+
+	 >>>>> X(4700) <<<<<
+--> Counting model result (at 90% CL): 
+		Upper Limit (no syst.) = 2.07058
+--> FC confidence intervals (at the 90% CL):
+1. w/o syst.
+	Upper Limit = 2.095
+	Lower Limit = 0
+--> Cross-sections:
+		Feldman-Cousins method:	0.339326 fb
+		Counting model method:	0.335371 fb

@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "DsDsJ_FCandCM_ULcalc.C": "cpp",
-        "utility": "c"
+        "utility": "c",
+        "StandardHypoTestInvDemo.C": "cpp"
     }
 }

@@ -70,8 +70,8 @@ Tot. syst. err.: 	 14.9526%
 	Upper Limit = 1.935
 	Lower Limit = 0
 --> Cross-sections:
-		Feldman-Cousins method:	0.313411 fb
-		Counting model method:	0.302529 fb
+		Feldman-Cousins method:	0.580732 fb
+		Counting model method:	0.560568 fb
 
 	 >>>>> X(4500) <<<<<
 ===== Systematics =====
@@ -95,8 +95,8 @@ Tot. syst. err.: 	 14.7173%
 	Upper Limit = 2.32
 	Lower Limit = 0
 --> Cross-sections:
-		Feldman-Cousins method:	0.375769 fb
-		Counting model method:	0.373786 fb
+		Feldman-Cousins method:	0.696278 fb
+		Counting model method:	0.692603 fb
 
 	 >>>>> X(4700) <<<<<
 ===== Systematics =====
@@ -120,6 +120,6 @@ Tot. syst. err.: 	 15.3253%
 	Upper Limit = 2.145
 	Lower Limit = 0
 --> Cross-sections:
-		Feldman-Cousins method:	0.347425 fb
-		Counting model method:	0.337812 fb
+		Feldman-Cousins method:	0.643758 fb
+		Counting model method:	0.625946 fb
 

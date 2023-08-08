@@ -299,7 +299,7 @@ double run_both_methods(int name, int mass_err_fact, int width_err_fact, RooReal
 void DsDsJ_FCandCM_ULcalc(){
 
     bool LHCb_syst_scan = false;
-    bool syst_scan = true;
+    bool syst_scan = false;
 
     remove("results.txt");
 
@@ -348,7 +348,7 @@ void DsDsJ_FCandCM_ULcalc(){
     int X_names[5] = {4274, 4685, 4630, 4500, 4700};
     double cross_sect_err[5] = {0};
 
-    for(int X_i=1; X_i<2; X_i++){
+    for(int X_i=3; X_i<2; X_i++){
         double cross_sect_ul_0 = run_both_methods(X_names[X_i], 0, 0, mass_2317, data_2317, syst_scan);
         if(LHCb_syst_scan){
             double cross_sect_ul_i = run_both_methods(X_names[X_i], 1, 0, mass_2317, data_2317, syst_scan);
@@ -366,7 +366,7 @@ void DsDsJ_FCandCM_ULcalc(){
             res.close();
         }
     }
-    for(int X_i=2; X_i<5; X_i++){
+    for(int X_i=4; X_i<5; X_i++){
         double cross_sect_ul_0 = run_both_methods(X_names[X_i], 0, 0, mass_2460, data_2460, syst_scan);
         if(LHCb_syst_scan){
             double cross_sect_ul_i = run_both_methods(X_names[X_i], 1, 0, mass_2460, data_2460, syst_scan);
