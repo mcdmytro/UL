@@ -1,6 +1,6 @@
-## Two methods developed for calculation of the upper limit on the number of signal events:
+## Two methods developed for the cross-section upper limit calculation:
 ### - Asymptotic method based on likelihood scan (Sen Jia)
-### - CLs method implemented with a counting model parametrized as FCs method.
+### - CLs method implemented in comparison with the Feldman-Cousins method.
 
 ##
 ### CLs method flow:
