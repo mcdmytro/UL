@@ -13,4 +13,4 @@
 
 4. If the `syst_scan` is set to `false`, is varied by the total systematic uncertainty value. CLs calculation is then performed for each  case, and the largest UL value is taken as a final result.
 
-    - Note: The total sysematic uncertainty is calculated as a square root of the quadrature sums of syst_error (base systematics uncertainty defined in the `run_both_methods` function), LHCb_error and stat_error (retrieved from the fit). 
+    Note: The total sysematic uncertainty is calculated as a square root of the quadrature sums of syst_error (base systematics uncertainty defined in the `run_both_methods` function), LHCb_error and stat_error (retrieved from the fit). 
