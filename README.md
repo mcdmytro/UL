@@ -1,8 +1,8 @@
-### Two methods developed for calculation of the upper limit on the number of signal events:
-## - Asymptotic method based on likelihood scan (Sen Jia)
-## - CLs method implemented with a counting model parametrized as FCs method.
+## Two methods developed for calculation of the upper limit on the number of signal events:
+# - Asymptotic method based on likelihood scan (Sen Jia)
+# - CLs method implemented with a counting model parametrized as FCs method.
 
-# CLs method flow:
+### CLs method flow:
 1. `SetXstatesParams` function returns properties (mass, width, LHCb_error) of a given X state. It includes the library containing the properties of X stated reported by LHCb.
 
     - Note: Only `LHCb_error` parameters are actually calculated before being included in the library. They are calculated by enabling the `LHCb_syst_scan` flag to `true` (while `syst_scan` is set to `false`). The code then performs the sequence of fits with mass and width parameters being deviated according to reported by LHCb errors to provide a final error, which should be manually written in the `SetXstatesParams` library.
