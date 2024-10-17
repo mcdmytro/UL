@@ -2,6 +2,7 @@
     "files.associations": {
         "DsDsJ_FCandCM_ULcalc.C": "cpp",
         "utility": "c",
-        "StandardHypoTestInvDemo.C": "cpp"
+        "StandardHypoTestInvDemo.C": "cpp",
+        "tuple": "cpp"
     }
 }

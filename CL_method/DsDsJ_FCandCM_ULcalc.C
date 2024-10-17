@@ -35,7 +35,7 @@ tuple <double, double, double, double> perform_fit(int name, double mass_mean, d
     CL90 = 1.64486,
     CL95 = 1.95996;
 
-    Double_t 
+    Double_t
     I0 = mean->getVal()-CL90*(sigma->getVal()),
     I1 = mean->getVal()+CL90*(sigma->getVal());
 
@@ -45,7 +45,7 @@ tuple <double, double, double, double> perform_fit(int name, double mass_mean, d
     RooAbsReal* int_bkg = bernstein->createIntegral(*mass, Range("int"), NormSet(*mass));
     RooAbsReal* int_all = pdf->createIntegral(*mass, Range("int"), NormSet(*mass));
 
-    Double_t 
+    Double_t
     int_val_scaled_sig = int_sig->getVal()*sig->getVal(),
     int_err_scaled_sig = int_sig->getVal()*sig->getError(),
     int_val_scaled_bkg = int_bkg->getVal()*bkg->getVal(),
@@ -61,10 +61,11 @@ tuple <double, double, double, double> perform_fit(int name, double mass_mean, d
     // return int_val_scaled_all;
     return make_tuple(int_val_scaled_all, int_val_scaled_sig, int_val_scaled_bkg, int_err_scaled_bkg);
 }
+
 // Pepforms scan
 double CountUL(int name, double nobs, double s, double b, double sigmab){
   RooWorkspace w("w");
-    
+
   // make Poisson model * Gaussian constraint
   w.factory("sum:nexp(s[0,0,15],b[1,0,10])");
   w.factory("Poisson:pdf(nobs[0,50],nexp)");
@@ -72,12 +73,12 @@ double CountUL(int name, double nobs, double s, double b, double sigmab){
   w.factory("PROD:model(pdf,constraint)");
 
   w.var("b")->setVal(b);
-  w.var("nobs")->setVal(nobs); 
+  w.var("nobs")->setVal(nobs);
   w.var("s")->setVal(s);
 
   w.var("b0")->setVal(b);
   w.var("b0")->setConstant(true);
-  w.var("sigmab")->setVal(sigmab*b);  
+  w.var("sigmab")->setVal(sigmab*b);
 
   ModelConfig mc("ModelConfig",&w);
   mc.SetPdf(*w.pdf("model"));
@@ -93,7 +94,7 @@ double CountUL(int name, double nobs, double s, double b, double sigmab){
   w.import(mc);
 
   // make data set with the number of observed events
-  RooDataSet dtst("dtst","", *w.var("nobs")); 
+  RooDataSet dtst("dtst","", *w.var("nobs"));
 
   dtst.add(*w.var("nobs") );
   w.import(dtst);
@@ -112,13 +113,13 @@ double CountUL(int name, double nobs, double s, double b, double sigmab){
                           "dtst",                 // data set name
                           0,                      // calculator type (0 = Freq)
                           2,                      // test statistic type (2 = two-sided Profile Likelihood)
-                          false,                  // use CLs
+                          true,                  // use CLs
                           25,                     // number of points
                           0,                      // xmin
                           5,                      // xmax
                           1e4                     // number of toys
-                          ); 
-    
+                          );
+
     TFile f(Form("Freq_Cls+b_grid_ts2_CountingModel_%i.root",name));
     RooStats::HypoTestInverterResult* r;
     f.GetObject("result_s", r);
@@ -126,7 +127,8 @@ double CountUL(int name, double nobs, double s, double b, double sigmab){
 
     return ul;
 }
-// Performs FCs method and returns 
+
+// Performs FCs method and returns
 tuple <double, double> FeldmanCousinUL(double ntot, double nbkg){
   // Feldman-Cousin trust intervas calculation
   TFeldmanCousins f;
@@ -136,11 +138,12 @@ tuple <double, double> FeldmanCousinUL(double ntot, double nbkg){
 
   return make_tuple(ul, ll);
 }
+
 // Set X_states parameters
 tuple <double, double, double> SetXstatesParams(int X_name, int mass_err_fact, int width_err_fact){
     Double_t X_mass_mean, X_mass_err, X_mass, X_width_mean, X_width_err, X_width, LHCb_err;
-    
-    // Considered X states: X(4274), X(4685), X(4630), X(4500) and X(4700) 
+
+    // Considered X states: X(4274), X(4685), X(4630), X(4500) and X(4700)
     if(X_name==4274){
         // X(4274)
         X_mass_mean = 4.294;
@@ -191,19 +194,29 @@ tuple <double, double, double> SetXstatesParams(int X_name, int mass_err_fact, i
         X_width = X_width_mean+X_width_err*width_err_fact;
         LHCb_err = 0.05400;
     }
-    
+
     return make_tuple(X_mass, X_width, LHCb_err);
 }
+
 // Process parameters assignment, fit, run counting model, run FCs and ofstream results
 double run_both_methods(int name, int mass_err_fact, int width_err_fact, RooRealVar *mass, RooDataSet *data, bool syst_scan){
     // Set X parameters
     double X_mass, X_width, LHCb_err;
     tie(X_mass, X_width, LHCb_err) = SetXstatesParams(name, mass_err_fact, width_err_fact);
-    // Perform fit           
-    double nobs, s, b, sigmab;                
-    tie(nobs, s, b, sigmab)  = perform_fit(name, X_mass, X_width, mass, data);  
+    // Perform fit
+    double nobs, s, b, sigmab;
+    tie(nobs, s, b, sigmab)  = perform_fit(name, X_mass, X_width, mass, data);
     sigmab /= b;
-    double tot_syst_err = sqrt(pow(0.0402,2)+pow(sigmab,2)+pow(LHCb_err, 2));
+
+    double tot_syst_err=0, glob_syst=0, effBrBr=0;
+    if(name==4274 || name==4685){
+        glob_syst = 0.0950;
+        effBrBr = 2.890e-5;
+        tot_syst_err = sqrt(pow(glob_syst,2)+pow(sigmab,2)+pow(LHCb_err, 2));}
+    else if(name==4630 || name==4500 || name==4700){
+        glob_syst = 0.1122;
+        effBrBr = 1.30e-5;
+        tot_syst_err = sqrt(pow(glob_syst,2)+pow(sigmab,2)+pow(LHCb_err, 2));}
 
     // Run counting model
     double CM_ul=0, CM_ul_ps=0, CM_ul_ns=0;
@@ -211,60 +224,59 @@ double run_both_methods(int name, int mass_err_fact, int width_err_fact, RooReal
     CM_ul    = CountUL(name, int(nobs), s, b, sigmab);
     if(syst_scan){
         CM_ul_ps = CountUL(name, int(nobs), s, b*(1+tot_syst_err), sigmab);
-        CM_ul_ns = CountUL(name, int(nobs), s, b*(1-tot_syst_err), sigmab);  
+        CM_ul_ns = CountUL(name, int(nobs), s, b*(1-tot_syst_err), sigmab);
     }
 
     printf("\n\n\n\t >>>>> X(%i) <<<<<", name);
 
     if(syst_scan){
-        printf("\n===== Systematics =====\n");
-        printf("Glob. sys. err.: \t 4.02%%\n");
-        printf("Stat. err.: \t\t %.2f%%\n", sigmab*100);
-        printf("LHCb. err.: \t\t %.2f%%\n", LHCb_err*100);
-        printf("Tot. syst. err.: \t %.2f%%\n", tot_syst_err*100);
+        printf("\n\t\t===== Systematics =====\n");
+        printf("Glob. sys. err.:  %.2f%%\n", glob_syst*100);
+        printf("Stat. err.:\t  %.2f%%\n", sigmab*100);
+        printf("LHCb. err.:\t  %.2f%%\n", LHCb_err*100);
+        printf("Tot. syst. err.:  %.2f%%\n", tot_syst_err*100);
     }
 
     printf("\n--> Counting model result (at 90%% CL):");
     printf("\n\t Upper Limit (no syst.) = %.3f \n", CM_ul);
     if(syst_scan){
-        printf("\n\t Upper Limit (+ syst) = %.3f \n", CM_ul_ps);
-        printf("\n\t Upper Limit (- syst) = %.3f \n", CM_ul_ns);
+        printf("\t Upper Limit (+ syst)   = %.3f \n", CM_ul_ps);
+        printf("\t Upper Limit (- syst)   = %.3f \n", CM_ul_ns);
     }
     // Run FCs methos
     double FC_ul=0, FC_ll=0, FC_ul_ps=0, FC_ll_ps=0, FC_ul_ns=0, FC_ll_ns=0;
     tie(FC_ul, FC_ll) = FeldmanCousinUL(nobs, b);
     if(syst_scan){
-        tie(FC_ul_ps, FC_ll_ps) = FeldmanCousinUL(nobs, b*(1+tot_syst_err)); 
-        tie(FC_ul_ns, FC_ll_ns) = FeldmanCousinUL(nobs, b*(1-tot_syst_err));      
-    }                                      
-    cout << "--> FC confidence intervals (at the 90\% CL):\n";
-    cout << "1. w/o syst." << endl;
-    cout << "\tUpper Limit = " <<  FC_ul << endl;
-    cout << "\tLower Limit = " <<  FC_ll << endl;
-    if(syst_scan){
-        cout << "2. + syst." << endl;
-        cout << "\tUpper Limit = " <<  FC_ul_ps << endl;
-        cout << "\tLower Limit = " <<  FC_ll_ps << endl;
-        cout << "3. - syst." << endl;
-        cout << "\tUpper Limit = " <<  FC_ul_ns << endl;
-        cout << "\tLower Limit = " <<  FC_ll_ns << endl;
+        tie(FC_ul_ps, FC_ll_ps) = FeldmanCousinUL(nobs, b*(1+tot_syst_err));
+        tie(FC_ul_ns, FC_ll_ns) = FeldmanCousinUL(nobs, b*(1-tot_syst_err));
     }
+    // cout << "--> FC confidence intervals (at the 90\% CL):\n";
+    // cout << "1. w/o syst." << endl;
+    // cout << "\tUpper Limit = " <<  FC_ul << endl;
+    // cout << "\tLower Limit = " <<  FC_ll << endl;
+    // if(syst_scan){
+    //     cout << "2. + syst." << endl;
+    //     cout << "\tUpper Limit = " <<  FC_ul_ps << endl;
+    //     cout << "\tLower Limit = " <<  FC_ll_ps << endl;
+    //     cout << "3. - syst." << endl;
+    //     cout << "\tUpper Limit = " <<  FC_ul_ns << endl;
+    //     cout << "\tLower Limit = " <<  FC_ll_ns << endl;
+    // }
     // Cross-sections calculation
-    Double_t eff = 6.3e-3;
     Double_t lum = 980.;
     printf("--> Cross-sections:\n");
-    printf("\tFeldman-Cousins method:\t%.2f fb\n", max(FC_ul, max(FC_ul_ps, FC_ul_ns))/eff/lum);
-    printf("\tCounting model method:\t%.2f fb\n", max(CM_ul, max(CM_ul_ps, CM_ul_ns))/eff/lum);
+    // printf("\tFeldman-Cousins method:\t%.2f fb\n", max(FC_ul, max(FC_ul_ps, FC_ul_ns))/effBrBr/lum);
+    printf("\tCounting model method:\t%.2f fb\n", max(CM_ul, max(CM_ul_ps, CM_ul_ns))/effBrBr/lum);
 
     ofstream res("results.txt", ios::app);
     if(!mass_err_fact && !width_err_fact){
         res << "\n\t >>>>> X(" << name << ") <<<<<\n";
         if(syst_scan){
             res << "===== Systematics =====\n";
-            res << "Glob. sys. err.: \t 4.02\%\n";
-            res << "Stat. err.: \t\t " << sigmab*100 << "\%\n";
-            res << "LHCb. err.: \t\t " << LHCb_err*100 << "\%\n";
-            res << "Tot. syst. err.: \t " << tot_syst_err*100 << "\%\n";
+            res << "Glob. sys. err.: " << glob_syst*100 << "\%\n";
+            res << "Stat. err.: \t " << sigmab*100 << "\%\n";
+            res << "LHCb. err.: \t " << LHCb_err*100 << "\%\n";
+            res << "Tot. syst. err.: " << tot_syst_err*100 << "\%\n";
             res << "=======================\n";
         }
     }
@@ -272,27 +284,27 @@ double run_both_methods(int name, int mass_err_fact, int width_err_fact, RooReal
     res << "--> Counting model result (at 90\% CL): \n";
     res << "\t\tUpper Limit (no syst.) = " << CM_ul << endl;
     if(syst_scan){
-        res << "\t\tUpper Limit (+ syst.) = " << CM_ul_ps << endl;
-        res << "\t\tUpper Limit (- syst.) = " << CM_ul_ns << endl;
+        res << "\t\tUpper Limit (+ syst.)  = " << CM_ul_ps << endl;
+        res << "\t\tUpper Limit (- syst.)  = " << CM_ul_ns << endl;
     }
-    res << "--> FC confidence intervals (at the 90\% CL):\n";
-    res << "1. w/o syst." << endl;
-    res << "\tUpper Limit = " <<  FC_ul << endl;
-    res << "\tLower Limit = " <<  FC_ll << endl;
-    if(syst_scan){
-        res << "2. + syst." << endl;
-        res << "\tUpper Limit = " <<  FC_ul_ps << endl;
-        res << "\tLower Limit = " <<  FC_ll_ps << endl;
-        res << "3. - syst." << endl;
-        res << "\tUpper Limit = " <<  FC_ul_ns << endl;
-        res << "\tLower Limit = " <<  FC_ll_ns << endl;
-    }
+    // res << "--> FC confidence intervals (at the 90\% CL):\n";
+    // res << "1. w/o syst." << endl;
+    // res << "\tUpper Limit = " <<  FC_ul << endl;
+    // res << "\tLower Limit = " <<  FC_ll << endl;
+    // if(syst_scan){
+    //     res << "2. + syst." << endl;
+    //     res << "\tUpper Limit = " <<  FC_ul_ps << endl;
+    //     res << "\tLower Limit = " <<  FC_ll_ps << endl;
+    //     res << "3. - syst." << endl;
+    //     res << "\tUpper Limit = " <<  FC_ul_ns << endl;
+    //     res << "\tLower Limit = " <<  FC_ll_ns << endl;
+    // }
     res << "--> Cross-sections:\n";
-    res << "\t\tFeldman-Cousins method:\t" << max(FC_ul, max(FC_ul_ps, FC_ul_ns))/eff/lum << " fb\n";
-    res << "\t\tCounting model method:\t"  << max(CM_ul, max(CM_ul_ps, CM_ul_ns))/eff/lum << " fb\n";
+    // res << "\t\tFeldman-Cousins method:\t" << max(FC_ul, max(FC_ul_ps, FC_ul_ns))/effBrBr/lum << " fb\n";
+    res << "\t\tCounting model method:\t"  << max(CM_ul, max(CM_ul_ps, CM_ul_ns))/effBrBr/lum << " fb\n";
     res.close();
 
-    return CM_ul/eff/lum;
+    return CM_ul/effBrBr/lum;
 }
 
 // Main function
@@ -348,7 +360,7 @@ void DsDsJ_FCandCM_ULcalc(){
     int X_names[5] = {4274, 4685, 4630, 4500, 4700};
     double cross_sect_err[5] = {0};
 
-    for(int X_i=3; X_i<2; X_i++){
+    for(int X_i=0; X_i<1; X_i++){
         double cross_sect_ul_0 = run_both_methods(X_names[X_i], 0, 0, mass_2317, data_2317, syst_scan);
         if(LHCb_syst_scan){
             double cross_sect_ul_i = run_both_methods(X_names[X_i], 1, 0, mass_2317, data_2317, syst_scan);
@@ -366,7 +378,7 @@ void DsDsJ_FCandCM_ULcalc(){
             res.close();
         }
     }
-    for(int X_i=4; X_i<5; X_i++){
+    for(int X_i=5; X_i<5; X_i++){
         double cross_sect_ul_0 = run_both_methods(X_names[X_i], 0, 0, mass_2460, data_2460, syst_scan);
         if(LHCb_syst_scan){
             double cross_sect_ul_i = run_both_methods(X_names[X_i], 1, 0, mass_2460, data_2460, syst_scan);

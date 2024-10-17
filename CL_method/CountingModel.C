@@ -1,19 +1,11 @@
 #include "StandardHypoTestInvDemo.C"
 
 void CountUL(double nobs, double s, double b, double sigmab){
-    // Double_t 
-    // // nobs   = 0.602,            // number of observed events
-    // nobs   = 0,            // number of observed events
-    // s      = 0,            // number of signal events
-    // b      = 0.024,            // number of background events
-    // // b      = 0.602,            // number of background events
-    // // sigmab = 0.088;      // relative uncertainty in b
-    // sigmab = 0.0001;      // relative uncertainty in b
 
   RooWorkspace w("w");
     
   // make Poisson model * Gaussian constraint
-  w.factory("sum:nexp(s[0,0,15],b[1,0,10])");
+  w.factory("sum:nexp(s[0,0,5],b[1,0,5])");
   w.factory("Poisson:pdf(nobs[0,50],nexp)");
   w.factory("Gaussian:constraint(b0[0,10],b,sigmab[5])");
   w.factory("PROD:model(pdf,constraint)");
@@ -23,7 +15,7 @@ void CountUL(double nobs, double s, double b, double sigmab){
   w.var("s")->setVal(s);
 
 
-  w.var("b0")->setVal(b);
+  w.var("b0")->setVal(0);
   w.var("b0")->setConstant(true);
   w.var("sigmab")->setVal(sigmab*b);  
 

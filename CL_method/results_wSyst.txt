@@ -1,125 +1,70 @@
+
 	 >>>>> X(4274) <<<<<
 ===== Systematics =====
-Glob. sys. err.: 	 4.02%
-Stat. err.: 		 8.8643%
-LHCb. err.: 		 2.658%
-Tot. syst. err.: 	 10.0897%
+Glob. sys. err.: 9.5%
+Stat. err.: 	 8.8643%
+LHCb. err.: 	 2.658%
+Tot. syst. err.: 13.2624%
 =======================
---> Counting model result (at 90% CL): 
+--> Counting model result (at 90% CL):
 		Upper Limit (no syst.) = 2.4504
-		Upper Limit (+ syst.) = 2.39583
-		Upper Limit (- syst.) = 2.45392
---> FC confidence intervals (at the 90% CL):
-1. w/o syst.
-	Upper Limit = 2.415
-	Lower Limit = 0.085
-2. + syst.
-	Upper Limit = 2.41
-	Lower Limit = 0.08
-3. - syst.
-	Upper Limit = 2.415
-	Lower Limit = 0.085
+		Upper Limit (+ syst.)  = 2.39
+		Upper Limit (- syst.)  = 2.45215
 --> Cross-sections:
-		Feldman-Cousins method:	0.391156 fb
-		Counting model method:	0.397461 fb
+		Counting model method:	86.5812 fb
 
->>>>> X(4685) <<<<<
+	 >>>>> X(4685) <<<<<
 ===== Systematics =====
-Glob. sys. err.: 	 4.02%
-Stat. err.: 		 8.86426%
-LHCb. err.: 		 5.536%
-Tot. syst. err.: 	 11.1974%
+Glob. sys. err.: 9.5%
+Stat. err.: 	 8.86426%
+LHCb. err.: 	 5.536%
+Tot. syst. err.: 14.1235%
 =======================
---> Counting model result (at 90% CL): 
+--> Counting model result (at 90% CL):
 		Upper Limit (no syst.) = 1.85203
-		Upper Limit (+ syst.) = 1.83965
-		Upper Limit (- syst.) = 1.92599
---> FC confidence intervals (at the 90% CL):
-1. w/o syst.
-	Upper Limit = 1.84
-	Lower Limit = 0
-2. + syst.
-	Upper Limit = 1.8
-	Lower Limit = 0
-3. - syst.
-	Upper Limit = 1.905
-	Lower Limit = 0
+		Upper Limit (+ syst.)  = 1.83547
+		Upper Limit (- syst.)  = 2.03626
 --> Cross-sections:
-		Feldman-Cousins method:	0.308552 fb
-		Counting model method:	0.311952 fb
+		Counting model method:	71.8967 fb
 
 	 >>>>> X(4630) <<<<<
 ===== Systematics =====
-Glob. sys. err.: 	 4.02%
-Stat. err.: 		 13.8788%
-LHCb. err.: 		 3.847%
-Tot. syst. err.: 	 14.9526%
+Glob. sys. err.: 11.22%
+Stat. err.: 	 13.9424%
+LHCb. err.: 	 3.847%
+Tot. syst. err.: 18.3052%
 =======================
---> Counting model result (at 90% CL): 
-		Upper Limit (no syst.) = 1.86782
-		Upper Limit (+ syst.) = 1.84607
-		Upper Limit (- syst.) = 1.86417
---> FC confidence intervals (at the 90% CL):
-1. w/o syst.
-	Upper Limit = 1.85
-	Lower Limit = 0
-2. + syst.
-	Upper Limit = 1.795
-	Lower Limit = 0
-3. - syst.
-	Upper Limit = 1.935
-	Lower Limit = 0
+--> Counting model result (at 90% CL):
+		Upper Limit (no syst.) = 1.85375
+		Upper Limit (+ syst.)  = 1.82307
+		Upper Limit (- syst.)  = 2.05145
 --> Cross-sections:
-		Feldman-Cousins method:	0.580732 fb
-		Counting model method:	0.560568 fb
+		Counting model method:	161.024 fb
 
 	 >>>>> X(4500) <<<<<
 ===== Systematics =====
-Glob. sys. err.: 	 4.02%
-Stat. err.: 		 13.9513%
-LHCb. err.: 		 2.408%
-Tot. syst. err.: 	 14.7173%
+Glob. sys. err.: 11.22%
+Stat. err.: 	 13.9027%
+LHCb. err.: 	 2.408%
+Tot. syst. err.: 18.027%
 =======================
---> Counting model result (at 90% CL): 
-		Upper Limit (no syst.) = 2.29956
-		Upper Limit (+ syst.) = 2.30775
-		Upper Limit (- syst.) = 2.26803
---> FC confidence intervals (at the 90% CL):
-1. w/o syst.
-	Upper Limit = 2.3
-	Lower Limit = 0
-2. + syst.
-	Upper Limit = 2.28
-	Lower Limit = 0
-3. - syst.
-	Upper Limit = 2.32
-	Lower Limit = 0
+--> Counting model result (at 90% CL):
+		Upper Limit (no syst.) = 2.33815
+		Upper Limit (+ syst.)  = 2.27922
+		Upper Limit (- syst.)  = 2.33724
 --> Cross-sections:
-		Feldman-Cousins method:	0.696278 fb
-		Counting model method:	0.692603 fb
+		Counting model method:	183.529 fb
 
 	 >>>>> X(4700) <<<<<
 ===== Systematics =====
-Glob. sys. err.: 	 4.02%
-Stat. err.: 		 13.7675%
-LHCb. err.: 		 5.4%
-Tot. syst. err.: 	 15.3253%
+Glob. sys. err.: 11.22%
+Stat. err.: 	 13.9467%
+LHCb. err.: 	 5.4%
+Tot. syst. err.: 18.6965%
 =======================
---> Counting model result (at 90% CL): 
-		Upper Limit (no syst.) = 2.07457
-		Upper Limit (+ syst.) = 2.07634
-		Upper Limit (- syst.) = 2.08565
---> FC confidence intervals (at the 90% CL):
-1. w/o syst.
-	Upper Limit = 2.095
-	Lower Limit = 0
-2. + syst.
-	Upper Limit = 2.04
-	Lower Limit = 0
-3. - syst.
-	Upper Limit = 2.145
-	Lower Limit = 0
+--> Counting model result (at 90% CL):
+		Upper Limit (no syst.) = 2.07058
+		Upper Limit (+ syst.)  = 2.06032
+		Upper Limit (- syst.)  = 2.18082
 --> Cross-sections:
-		Feldman-Cousins method:	0.643758 fb
-		Counting model method:	0.625946 fb
-
+		Counting model method:	171.179 fb
